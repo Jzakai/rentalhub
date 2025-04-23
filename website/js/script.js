@@ -1,4 +1,4 @@
-document.getElementById("contact-us").addEventListener("submit", function (event) {
+const contactForm = document.getElementById("contact-us").addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Get values
@@ -52,5 +52,5 @@ document.getElementById("contact-us").addEventListener("submit", function (event
     });
 });
 
+
   
- 

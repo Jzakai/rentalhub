@@ -27,6 +27,7 @@ app.post("/insert", (req, res) => { // take the data sent to the front end--> pa
         lan: req.body.lan,
         subject: req.body.subject,
         message: req.body.message,
+        
       };
       
     const query = "INSERT INTO contact_info SET ?";
@@ -37,9 +38,38 @@ app.post("/insert", (req, res) => { // take the data sent to the front end--> pa
       ;
     res.send("Data inserted successfully!"); });
     });
-    // View data route 
     
-
-//activating server 
+  //activating server 
 app.listen(port, () => {
-console.log(`Server is running on port ${port}`); });
+    console.log(`Server is running on port ${port}`); });
+      
+    app.post("/add-property", (req, res) => {
+    console.log("✅ Add Property route hit");
+        const propData = {
+          fullName: req.body.fullName,
+          email: req.body.email,
+          phone: req.body.phone,
+          title: req.body.title,
+          type: req.body.type,
+          location: req.body.location,
+          price: req.body.price,
+          area: req.body.area,
+          rooms: req.body.rooms,
+          bathrooms: req.body.bathrooms,
+          description: req.body.description,
+          propertyImage: req.body.propertyImage,
+        };
+      
+        const query = "INSERT INTO properties SET ?";
+        pool.query(query, propData, (error, result) => {
+          if (error) {
+            console.error("❌ Error inserting into database:", error);
+            return res.status(500).send("Database error");
+          }
+          res.send("Data inserted successfully!");
+        });
+      });
+      
+
+    
+    
