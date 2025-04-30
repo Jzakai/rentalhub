@@ -68,6 +68,16 @@ app.listen(port, () => {
           }
           res.send("Data inserted successfully!");
         });
+
+        
+        
+      });
+
+      app.get("/properties", (req, res) => {
+        pool.query("SELECT * FROM properties", (err, result) => {
+          if (err) return res.status(500).send(err);
+          res.json(result);
+        });
       });
       
 
